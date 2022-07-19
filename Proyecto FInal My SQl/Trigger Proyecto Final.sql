@@ -1,0 +1,14 @@
+USE PRO;
+
+DROP trigger IF EXISTS triggerHistorial;
+DELIMITER $$
+
+CREATE TRIGGER NewHistorial BEFORE INSERT ON Historial 
+FOR EACH ROW
+BEGIN
+		INSERT INTO Historial(IdPago) VALUES (NEW.IdPago); 
+END $$
+
+DELIMITER ;
+
+SELECT*FROM Historial;
